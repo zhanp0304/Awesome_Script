@@ -31,7 +31,7 @@ DEFAULT_SUBMIT_MERGE_REQUEST_API="https://%s/api/v4/projects/%s/merge_requests"
 
 # Set the GitLab hostname and access token
 DEBUG_OPEN_FLAG=${1:-"n"}
-GITLAB_HOST=${2:-"code.choerodon.com.cn"}
+GITLAB_HOST=${2:-"<your_gitlab_host>"}
 ACCESS_TOKEN=${3:-"${YOUR_ACCESS_TOKEN}"}
 DEFAULT_ASSIGN_NAME=${4:-"${DEFAULT_ASSIGN_NAME}"}
 OS=$(uname)
@@ -53,7 +53,7 @@ function debug_echo() {
 
 function print_declaring() {
   printf "\n"
-  printf "\033[33m作者：zhanpeng.jiang@hand-china.com\n\033[0m"
+  printf "\033[33m作者：Rise\n\033[0m"
   printf "\033[33m声明：本脚本致力于解决gitlab界面需要重复操作多次的痛点问题，尤其适用于需要同时对多个代码仓库提合并请求的场景。\n\n\033[0m"
   printf "\033[33m温馨提示：可以同时选择多个项目，以及多个目标分支，将根据同一个源分支，同时对多个代码仓库及其多个目标分支提合并请求。\n\n\033[0m"
 }
@@ -183,7 +183,7 @@ function curl_resp_success_check() {
     echo "true"
     return
   elif [[ "${http_status_code}" == "409" ]]; then
-    printf "\033[31mError: 重复请求！您已经提交过一次合并请求了，请先到猪齿鱼gitlab界面手动处理上一个请求后重试 \033[0m\n" >&2
+    printf "\033[31mError: 重复请求！您已经提交过一次合并请求了，请先到gitlab界面手动处理上一个请求后重试 \033[0m\n" >&2
     exit 1
   fi
   printf "\033[31mError: http_status_code:[%s] curl请求失败, 可能是gitlab服务器内部错误！请稍后重试~ \033[0m\n" "$http_status_code" >&2

@@ -61,7 +61,7 @@ function print_declaring() {
 function print_project_info() {
   local num=${#DEFAULT_PROJECTS[@]}
   for ((i = 0; i < "${num}"; i++)); do
-    echo -e "\033[032m $i: ${DEFAULT_PROJECTS["$i"]}        \033[0m"
+    echo "\033[032m $i: ${DEFAULT_PROJECTS["$i"]}        \033[0m"
   done
 }
 
@@ -360,7 +360,7 @@ while true; do
   read -p $'\033[34m请输入源分支名: \033[0m' -r SOURCE_BRANCH
   read -p $'\033[34m请输入目标分支名（若要选择多个则以空格分隔输入）: \033[0m' -r -a target_branches
   #  read -p $'\033[34m请输入审批人名称（直接回车将默认分配给'"${ASSIGNEE_NAME}"$'进行合并）: \033[0m' -r assignee_name_user_input
-  read -p $'\033[34m请输入审批人名称（直接回车将默认分配'"${ASSIGNEE_NAME}"$'进行合并)\033[0m' -r assignee_name_user_input
+  read -p $'\033[34m请输入审批人名称（直接回车将默认分配'"${ASSIGNEE_NAME}"$'进行合并)：\033[0m' -r assignee_name_user_input
   if [[ -n "$assignee_name_user_input" && ! "$assignee_name_user_input" =~ ^[\ ]*$ ]]; then
     debug_echo "pick assignee name: $assignee_name_user_input"
     ASSIGNEE_NAME="$assignee_name_user_input"

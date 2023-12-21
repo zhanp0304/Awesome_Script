@@ -1,3 +1,4 @@
 init
 add abc for feature-1;
+add cde for feature-2;
 add zxc for feature-1;
